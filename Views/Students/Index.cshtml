@@ -1,0 +1,83 @@
+﻿@model IEnumerable<Student>
+@{
+    Layout = null;
+}
+
+
+<form asp-controller="Students" asp-action="Index" method="post" enctype="multipart/form-data">
+    <h1> Excel File Reader</h1>
+    <hr />
+    <input type="file" name="file" />
+    <hr />
+    <button type="submit">Upload</button>
+</form>
+
+@if (Model.Count() > 0)
+{
+
+    <hr />
+
+    <h3>Excel Imported Data:-</h3>
+    <br />
+    <table cellpadding="0" cellspacing="0" border="1">
+        <tr style="font-weight:600">
+            <td>ID</td>
+            <td>Name</td>
+            <td>Age</td>
+            <td>EmailID</td>
+            <td>MobileNo</td>
+        </tr>
+        @foreach (Student student in Model)
+        {
+            <tr>
+                <td>@student.Id</td>
+                <td>@student.Name</td>
+                <td>@student.Age</td>
+                <td>@student.Email</td>
+                <td>@student.MobileNo</td>
+            </tr>
+
+        }
+    </table>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 8px;
+            border: 1px solid #ddd;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3px;
+            background-color: DarkSalmon;
+            color: white;
+        }
+
+    </style>
+
+
+}
+
+<br/>
+<br/>
+<br/>
+
+<footer class="border-top footer text-muted">
+    <div class="container">
+        &copy; 2023 - ReadExcelFile -By Mukesh
+    </div>
+</footer>
